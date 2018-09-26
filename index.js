@@ -1,5 +1,17 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+
+const keys = require('./config/keys')
+
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true
+}, (err) => {
+  if (err) {
+    console.log("DB Connection Error:", err)
+  }
+  console.log('connected to db');
+});
 
 //Routes
 require('./routes/authRoutes')(app);
