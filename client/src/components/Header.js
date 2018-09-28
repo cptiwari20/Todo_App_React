@@ -15,10 +15,18 @@ class Header extends Component {
       </li>;
     default:
       return [
-        <li>{this.props.auth.name}</li>,
-        <li><img className='rounded' src={this.props.auth.image} alt={this.props.auth.name}/></li>,
-        <li><a href='/api/logout'>Logout
-          <i className='material-icons right'>account_circle</i>
+        <li key='2'>
+        <Link to='/profile'>
+          <img 
+            className='btn-floating' 
+            src={this.props.auth.image} 
+            alt={this.props.auth.name}/>
+        </Link>
+        </li>,
+        <li key='3'>
+          <a href='/api/logout'>
+            Logout
+            <i className='material-icons right'>account_circle</i>
           </a>
         </li>
       ]
@@ -30,7 +38,6 @@ class Header extends Component {
         <div className='nav-wrapper deep-purple accent-3'>
           <a className='brand-logo'>Two-DOO</a>
           <ul className="right">
-            <li><a>Nothing</a></li>
             {this.renderContent()}
           </ul>
         </div>
