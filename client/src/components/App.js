@@ -5,7 +5,8 @@ import * as actions from '../actions'
 
 import Header from './Header';
 import Landing from './Landing';
-import Login from './users/Login'
+import Login from './users/Login';
+import Profile from './users/Profile'
 
 class App extends Component {
   componentDidMount(){
@@ -18,6 +19,7 @@ class App extends Component {
       <div>
         <Header />
         <Switch>
+          <Route path='/profile' component={Profile} />
           <Route path='/login' component={Login} />
           <Route path="/" component={Landing}/> 
         </Switch>

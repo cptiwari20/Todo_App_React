@@ -36,7 +36,7 @@ class Header extends Component {
     return(
       <nav>
         <div className='nav-wrapper deep-purple accent-3'>
-          <a className='brand-logo'>Two-DOO</a>
+          <a className='brand-logo'>Two-Doo</a>
           <ul className="right">
             {this.renderContent()}
           </ul>
