@@ -7,6 +7,8 @@ import Header from './Header';
 import Landing from './Landing';
 import Login from './users/Login';
 import Profile from './users/Profile'
+import Dashboard from './users/Dashboard'
+
 
 class App extends Component {
   componentDidMount(){
@@ -19,6 +21,7 @@ class App extends Component {
       <div>
         <Header />
         <Switch>
+          <Route path='/dashboard' component={Dashboard} />
           <Route path='/profile' component={Profile} />
           <Route path='/login' component={Login} />
           <Route path="/" component={Landing}/> 

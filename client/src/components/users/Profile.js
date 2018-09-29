@@ -11,8 +11,10 @@ class Profile extends Component {
       )
     }else if(!user){
       return(
+      <div className='card'>
       <div className="progress">
           <div className="indeterminate"></div>
+      </div>
       </div>
       )
     } else 
