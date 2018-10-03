@@ -13,13 +13,15 @@ class Dashboard extends Component {
     return(
       this.props.notes.map(({title, body, createdAt, _id }) => {
         return(
-          <div key={_id} className='card'>
+          <div key={_id} className='card horizontal'>
+          <div className='card-stacked'>
             <div className='card-contents center-align'>
               <span className="card-title">{title}</span>
               <p>{body}</p>  
             </div>
             <div className='card-action'>
             <a>Added on: {new Date(createdAt).toLocaleDateString()}</a>
+            </div>
             </div>
           </div>
         )

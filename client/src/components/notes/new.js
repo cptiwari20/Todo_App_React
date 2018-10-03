@@ -3,39 +3,11 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { submitNote } from '../../actions';
+import { newNoteField, newNoteFieldTA } from './formFields';
+import ImageInputField from './ImageField'
 
 class NewNote extends Component {
   renderNewForm(){
-    const newNoteField = ({name, input, label, meta: {touched, error}}) => {
-      return(
-        <div>
-          <label htmlFor={name}>{label}</label>
-          <input 
-            id={name} 
-            {...input} 
-            style={{ marginBottom: '5px' }}/>
-          <div className='red-text' style={{ marginBottom: '20px' }}>
-          {touched && error} 
-          </div>
-        </div> 
-      )
-    };
-    const newNoteFieldTA = ({name, input, label, meta: {touched, error}}) => {
-      return(
-        <div>
-          <label htmlFor={name}>{label}</label>
-          <textarea 
-              id={name} 
-              {...input} 
-              className="materialize-textarea"
-              style={{ marginBottom: '5px' }}>
-          </textarea>
-          <div className='red-text' style={{ marginBottom: '20px' }}>
-          {touched && error} 
-          </div>
-        </div> 
-      )
-    };
     return(
       <div>
         <Field 
@@ -56,6 +28,7 @@ class NewNote extends Component {
             label='Categories'
             component={newNoteField}
           />
+          <ImageInputField />
       </div> 
     )
   }

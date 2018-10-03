@@ -10,12 +10,13 @@ module.exports = app => {
   });
 
   app.post('/api/notes', requiresLogin, async (req, res) => {
-    const { title, body, category } = req.body; 
+    const { title, body, category, image } = req.body; 
     try{
       const note = await new Notes({
         title,
         body,
         category,
+        image,
         createdAt: Date.now(),
         _user: req.user
       })
