@@ -8,7 +8,7 @@ import Landing from './Landing';
 import Login from './users/Login';
 import Profile from './users/Profile'
 import Dashboard from './users/Dashboard';
-import NewNote from './notes/new'
+import NoteNew from './notes/NoteNew'
 
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
       <div>
         <Header />
         <Switch>
-        0  <Route path='/notes/new' component={NewNote} />
+           <Route path='/notes/new' component={NoteNew} />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/profile' component={Profile} />
           <Route path='/login' component={Login} />

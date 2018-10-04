@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { submitNote } from '../../actions';
 import { newNoteField, newNoteFieldTA } from './formFields';
-import ImageInputField from './ImageField'
+
 
 class NewNote extends Component {
   renderNewForm(){
@@ -28,15 +26,14 @@ class NewNote extends Component {
             label='Categories'
             component={newNoteField}
           />
-          <ImageInputField />
+         
       </div> 
     )
   }
   render(){
-    const { handleSubmit, submitNote } = this.props;
     return(
       <div className='container'>
-      <form onSubmit={handleSubmit(values => submitNote(values))}>
+      <form onSubmit={this.props.handleSubmit(() => this.props.onNoteSubmit())}>
         <div className='input-field'>
         {this.renderNewForm()}
         </div>
@@ -49,7 +46,7 @@ class NewNote extends Component {
           className='btn waves-effect right green'
         >
           <i className='material-icons right'>done</i>
-          Submit
+          Next
         </button>
       </form>
       </div>
@@ -75,4 +72,4 @@ export default reduxForm({
   validate,
   form: 'NewNote',
   destroyOnUnmount: false
-})(connect(null, { submitNote })(NewNote));
+})(NewNote);
