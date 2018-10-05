@@ -2,7 +2,15 @@ const mongoose = require('mongoose');
 const Notes = mongoose.model('notes');
 const requiresLogin = require('../middlewares/requiresLogin');
 
+
 module.exports = app => {
+  app.get('/api/notes/:id', requiresLogin, async (req, res) => {
+    const note = await Notes.findOne({
+      _user: req.user._id,
+      _id: req.params.id
+    })
+    res.send(note)
+  })
 
   app.get('/api/notes', requiresLogin, async (req, res) => {
     const notes = await Notes.find({ _user: req.user });

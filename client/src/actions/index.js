@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_NOTES } from './types';
+import { FETCH_USER, FETCH_NOTES, FETCH_NOTE } from './types';
 
 export const fetchUser = () => async dispatch => {
    const res = await axios.get('/api/current_user')
@@ -16,7 +16,6 @@ export const fetchNotes = () => async dispatch => {
   })
 }
 export const submitNote = (values, file, history) => async dispatch => {
-  console.log({file})
   const configUrl = await axios.get('/api/upload')
   const upload = await axios.put(configUrl.data.url, file, {
     headers:{
@@ -28,6 +27,14 @@ export const submitNote = (values, file, history) => async dispatch => {
   history.push('/dashboard');
   dispatch({
     type: FETCH_USER,
+    payload: res.data
+  })
+}
+
+export const fetchNote = (id) => async dispatch => {
+  const res = await axios.get(`/api/notes/${id}`)
+  dispatch({
+    type: FETCH_NOTE,
     payload: res.data
   })
 }

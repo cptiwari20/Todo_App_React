@@ -8,7 +8,8 @@ import Landing from './Landing';
 import Login from './users/Login';
 import Profile from './users/Profile'
 import Dashboard from './users/Dashboard';
-import NoteNew from './notes/NoteNew'
+import NoteNew from './notes/NoteNew';
+import NoteShow from './notes/NoteShow'
 
 
 class App extends Component {
@@ -21,13 +22,16 @@ class App extends Component {
       <BrowserRouter>
       <div>
         <Header />
+        <div className='container'>
         <Switch>
-           <Route path='/notes/new' component={NoteNew} />
+          <Route path='/notes/new' component={NoteNew} />
+          <Route exact path='/notes/:id' component={NoteShow} />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/profile' component={Profile} />
           <Route path='/login' component={Login} />
           <Route path="/" component={Landing}/> 
         </Switch>
+        </div>
       </div>
       </BrowserRouter> 
     </div>
