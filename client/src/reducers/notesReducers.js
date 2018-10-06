@@ -1,13 +1,15 @@
-import mapKeys from 'lodash/mapKeys';
-import { FETCH_NOTES, FETCH_NOTE } from '../actions/types'
+import _ from 'lodash';
+import { FETCH_NOTES, FETCH_NOTE, DELETE_NOTE } from '../actions/types'
 export default function( state = {}, actions){
   switch (actions.type) {
     case FETCH_NOTE:
-      const blog = actions.payload;
-      return {...state, [blog._id]: blog };
+      const note = actions.payload;
+      return {...state, [note._id]: note };
+    case DELETE_NOTE:
+      return _.omit(state, note);
     case FETCH_NOTES:
       console.info(state)
-      return { ...state, ...mapKeys(actions.payload, '_id')};
+      return _.mapKeys(actions.payload, '_id');
     default:
       return state;
   }

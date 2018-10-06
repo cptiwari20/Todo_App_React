@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_NOTES, FETCH_NOTE } from './types';
+import { FETCH_USER, FETCH_NOTES, FETCH_NOTE, DELETE_NOTE } from './types';
 
 export const fetchUser = () => async dispatch => {
    const res = await axios.get('/api/current_user')
@@ -35,6 +35,17 @@ export const fetchNote = (id) => async dispatch => {
   const res = await axios.get(`/api/notes/${id}`)
   dispatch({
     type: FETCH_NOTE,
+    payload: res.data
+  })
+};
+
+export const deleteNote = (id, history) => async dispatch => {
+  const res = await axios.delete(`/api/notes/${id}`);
+  history.push('/dashboard')
+  console.log('Note is successfully dleted');
+  
+  dispatch({
+    type: DELETE_NOTE,
     payload: res.data
   })
 }

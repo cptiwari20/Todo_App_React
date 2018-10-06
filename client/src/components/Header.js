@@ -59,7 +59,7 @@ class Header extends Component {
 
   render(){
     return(
-    <div className="deep-purple accent-3">
+    <div className="">
       <nav>
           <div className='nav-wrapper deep-purple accent-3'>
         <div className='container'>

@@ -9,10 +9,11 @@ class Dashboard extends Component {
 
   render(){
     return(
-      <div className='container'>
-        
-         <NotesList />
-        
+      <div className=''>
+      <div className='row'>
+        <NotesList />
+      </div>
+               
       <div className='fixed-action-btn right'>
         <Link className='btn-floating btn-large' to="/notes/new">
           <i className='material-icons'>add</i>
