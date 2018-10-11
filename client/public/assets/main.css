@@ -1,0 +1,9 @@
+#note_body {
+  white-space: pre-wrap;
+}
+.truncate{
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

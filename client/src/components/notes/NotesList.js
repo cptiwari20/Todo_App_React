@@ -10,21 +10,21 @@ class NotesList extends Component {
   }
   render(){
     return(
-      _.map(this.props.notes, ({title, _id, image }) => {
+      _.map(this.props.notes, ({title, _id, image, body }) => {
         return(
           <div key={_id} className='col s12 m4'>
-          <div className='card horizontal'>
-          <div className='card-image'>
-            <img alt={title} src={'https://s3.ap-south-1.amazonaws.com/two-doo-reactapp/' + image} />
-          </div>
-          <div className='card-stacked'>
-            <div className='card-contents center-align'>
-              <span className="card-title">{title}</span>
-              <p className='grey-text lighten-2'>...</p>  
+          <div className='card'>
+            <div className='card-image'>
+              <img alt={title} src={'https://s3.ap-south-1.amazonaws.com/two-doo-reactapp/' + image} />
             </div>
-            <div className='card-action'>
-            <Link className='btn waves-effect waves-light' to={`/notes/${_id}`}>Read More</Link>
-            </div>
+            <div className='card-stacked'>
+              <div className='card-content'>
+                <span className="card-title">{title}</span>
+                <p className='grey-text lighten-2 truncate'>{body}</p>  
+              </div>
+              <div className='card-action'>
+              <Link className='btn waves-effect waves-light' to={`/notes/${_id}`}>Read More</Link>
+              </div>
             </div>
           </div>
           </div>

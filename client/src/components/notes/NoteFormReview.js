@@ -4,7 +4,12 @@ import { withRouter } from 'react-router-dom';
 import { submitNote } from '../../actions';
 
 class NoteFormReview extends Component {
-  state = {file: null}
+  state = {
+    file: null, 
+    buttonColor: 'green', 
+    buttonLogo: 'done',
+    buttonText: 'submit'
+  }
 
   onFileChange(event){
     this.setState({file: event.target.files[0]})
@@ -26,7 +31,7 @@ class NoteFormReview extends Component {
         </div>
         <div key='body' style={{ marginBottom: '20px' }}>
           <label>Content</label>
-          <div>{body}</div>
+          <div style={{ whiteSpace: "pre-wrap"}}>{body}</div>
         </div>
         <div key='category' style={{ marginBottom: '20px' }}>
           <label>Categores</label>
@@ -34,7 +39,17 @@ class NoteFormReview extends Component {
         </div>
       </div>
         )
-      }
+      };
+
+    changeButton(){
+      return(
+        this.setState({
+          buttonColor: 'yellow', 
+            buttonLogo: 'done',
+            buttonText: 'Loading...'
+        }) 
+      )
+    }
   render(){
     return(
       <div className='container'>
@@ -68,10 +83,11 @@ class NoteFormReview extends Component {
 
         <button 
           type='submit'
-          className='btn waves-effect green right'
+          className={`btn waves-effect right ${this.state.buttonColor}`}
+          onClick={this.changeButton.bind(this)}
         >
-          <i className='material-icons right'>done</i>
-          Submit
+          <i className="material-icons right" >{this.state.buttonLogo}</i>
+          {this.state.buttonText}
         </button>
         </form>
       </div>

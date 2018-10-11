@@ -52,7 +52,7 @@ class NoteShow extends Component{
           <h2 className='header'>{title}</h2>
           <span className='grey-text lighten-2'>Created on: {new Date(createdAt).toLocaleDateString()}</span>
           <span>{this.renderOptions()}</span>
-          <p>{body}</p>
+          <p id="note_body">{body}</p>
           <p className='chip'>{category}</p>
           </div>
         </div>
