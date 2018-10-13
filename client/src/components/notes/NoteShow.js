@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchNote, deleteNote } from '../../actions';
 
@@ -22,13 +22,14 @@ class NoteShow extends Component{
     deleteNote(_id, history);
   }
   renderOptions(){
-    const { auth } = this.props;
+    const { auth, note: { _id } } = this.props;
     if(auth){
       return(
         <div>
           <form onSubmit={this.onSubmitDelete.bind(this)}>
             <button className='btn red' type='submit'>Delete</button>
           </form>
+          <Link className="btn orange" to={`/notes/edit/${_id}`}>Edit</Link>
         </div>
       )
     }

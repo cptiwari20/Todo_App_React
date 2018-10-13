@@ -7,8 +7,18 @@ module.exports = app => {
   app.delete('/api/notes/:id', requiresLogin, async (req, res) => {
     const note = await Notes.findByIdAndRemove(req.params.id)
     res.send(note)
+  });
+  app.put('/api/notes/edit/:id', requiresLogin, async (req, res) => {
+    const { title, body, category } = req.body;
+    const note = await Notes.findByIdAndUpdate(req.params.id, {
+      $set: {
+          title, 
+          body,
+          category
+        }
+        })
+      res.send(note);
   })
-
   app.get('/api/notes/:id', requiresLogin, async (req, res) => {
     const note = await Notes.findOne({
       _user: req.user._id,

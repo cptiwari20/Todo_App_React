@@ -9,7 +9,8 @@ import Login from './users/Login';
 import Profile from './users/Profile'
 import Dashboard from './users/Dashboard';
 import NoteNew from './notes/NoteNew';
-import NoteShow from './notes/NoteShow'
+import NoteShow from './notes/NoteShow';
+import NoteUpdate from './notes/NoteUpdate';
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
         <Header />
         <div className='container'>
         <Switch>
+          <Route path='/notes/edit/:id' component={NoteUpdate} />
           <Route path='/notes/new' component={NoteNew} />
           <Route exact path='/notes/:id' component={NoteShow} />
           <Route path='/dashboard' component={Dashboard} />
