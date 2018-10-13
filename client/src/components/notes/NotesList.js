@@ -12,8 +12,8 @@ class NotesList extends Component {
     return(
       _.map(this.props.notes, ({title, _id, image, body }) => {
         return(
-          <div key={_id} className='col s12 m4'>
-          <div className='card'>
+          <div key={_id} className='col s12 m4 l3'>
+          <div className='card medium'>
             <div className='card-image'>
               <img alt={title} src={'https://s3.ap-south-1.amazonaws.com/two-doo-reactapp/' + image} />
             </div>
