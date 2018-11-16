@@ -24,7 +24,7 @@ class NoteShow extends Component{
   renderOptions(){
     const { auth, note: { _id } } = this.props;
     if(auth){
-      return(
+      return( 
         <div className='row right'>
           <div className='col s6'>
             <form onSubmit={this.onSubmitDelete.bind(this)}>
