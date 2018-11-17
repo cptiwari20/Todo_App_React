@@ -5,12 +5,12 @@ import ReduxThunk from 'redux-thunk';
 
 import reducer from './reducers';
 
-export default function(children){
-  const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
+export default function({children, initialState = {} }){
+  const newStore = createStore(reducer, initialState, applyMiddleware(ReduxThunk));
   
   return ( 
-  <Provider store={store}>
-    <children/>
+  <Provider store={newStore}>
+    {children}
   </Provider>
   )
 }

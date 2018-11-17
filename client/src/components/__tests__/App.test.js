@@ -9,8 +9,11 @@ beforeEach(() => {
   wrapped = shallow(
     <Root>
       <App />
-    </Root>);
+    </Root>)
 })
+
 it('shows the header', () => {
-  expect(wrapped.find(Header).length).toEqual(1);
-})
+  expect(wrapped.find('div')).toBeTruthy();
+  console.log(wrapped.find('div.container').length)
+  expect(wrapped.find(Header)).toBeTruthy();
+});
