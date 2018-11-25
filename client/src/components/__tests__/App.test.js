@@ -1,19 +1,22 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Root from '../../Root'
-import App from "../App";
-import Header from '../Header';
+import ConnectApp, { App } from "../App";
+import {Header} from '../Header';
 
-let wrapped;
+let wrapper;
 beforeEach(() => {
-  wrapped = shallow(
-    <Root>
-      <App />
-    </Root>)
+  wrapper = mount(
+    <Root initialState={{auth: {}}}>
+      <ConnectApp  />
+    </Root>
+    );
 })
-
-it('shows the header', () => {
-  expect(wrapped.find('div')).toBeTruthy();
-  console.log(wrapped.find('div.container').length)
-  expect(wrapped.find(Header)).toBeTruthy();
+it('have a connectApp HOC with Component', () => {
+  expect(wrapper.find('Connect(App)').length).toEqual(1);
+  expect(wrapper.find(ConnectApp).length).toEqual(1)
 });
+
+it.only('only have App component', () => {
+  expect(wrapper.find('App').length).toEqual(1)
+})

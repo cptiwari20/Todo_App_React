@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import {BrowserRouter as Router, Link } from 'react-router-dom'
 import {connect } from 'react-redux';
 
 class Header extends Component {
@@ -59,38 +59,38 @@ class Header extends Component {
 
   render(){
     return(
-    <div className="">
+    <Router>
       <nav>
-          <div className='nav-wrapper deep-purple accent-3'>
-        <div className='container'>
-          <Link className='brand-logo'
-          to={this.props.auth ? '/dashboard' : '/'}>
-            Two-Doo
-          </Link>
-          <a data-target="slide-out" className="sidenav-trigger">
-          <i className="material-icons left">menu</i>
-          </a>
-          <ul className="hide-on-med-and-down right">
-            {this.renderContent()}
-          </ul>
-          <ul id="slide-out" className="sidenav">
-            {this.renderSidenav()}
-            <li className="sidenav-close">
-              <Link to='/'>
-                <i className="material-icons">home</i>
-                Home
-              </Link>
-            </li>
-            <li className="sidenav-close">
-              <Link to='/about'>About</Link>
-            </li>
-            <li><div className="divider"></div></li>
+        <div className='nav-wrapper deep-purple accent-3'>
+          <div className='container'>
+            <Link className='brand-logo'
+            to={this.props.auth ? '/dashboard' : '/'}>
+              Two-Doo
+            </Link>
+            <a data-target="slide-out" className="sidenav-trigger">
+              <i className="material-icons left">menu</i>
+            </a>
+            <ul className="hide-on-med-and-down right">
               {this.renderContent()}
-          </ul>
+            </ul>
+            <ul id="slide-out" className="sidenav">
+              {this.renderSidenav()}
+              <li className="sidenav-close">
+                <Link to='/'>
+                  <i className="material-icons">home</i>
+                  Home
+                </Link>
+              </li>
+              <li className="sidenav-close">
+                <Link to='/about'>About</Link>
+              </li>
+              <li><div className="divider"></div></li>
+                {this.renderContent()}
+            </ul>
           </div>
         </div>
       </nav>
-     </div>
+     </Router>
     )
   }
 };
